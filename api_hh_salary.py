@@ -20,39 +20,34 @@ def parsing_av_salary(city, vacancy):
         result_json = result.json()
         data_whole.append(result_json)
         # print(result_json)
-
-    for item in data_whole: # Перебираем вакансии в выгрузке
+    for item in data_whole: # Перебираем вакансии
         # print('for item')
         data = item['items']
-        n = 0 # Счетчик количество рассмотренных вакансий с указанными зарплатами
+        n = 0 # количество рассмотренных вакансий с указанными зарплатами
         sum_zp = 0 # Сумматор зарплат
-        for record in data: # Перебираем вакансии
-            if record['salary'] != None: # Есть ли инфа по зарпоате в вакансии
+        for record in data: # Перебираем
+            if record['salary'] != None: # Есть ли инфа по зп в вакансии
                 salary = record['salary']
-                if salary['from'] != None: # Есть ли инфа по минимальной зарпоате в вакансии
+                if salary['from'] != None: # инфа по минимальной зарпоате в вакансии
                     n += 1
-                    # Учитываем курс валюты на сегодняшнюю дату
+                    # курс валюты на сегодняшнюю дату
                     if salary['currency'] == 'USD':
                         koef = koef_USD
                     elif salary['currency'] == 'EUR':
                         koef = koef_EUR
                     else: koef = 1
-                    # Учитываем как указана зарплата или диапазон зарплат
-                    if salary['to'] != None:  # Есть ли инфа по максимальной зарпоате в вакансии
+                    # зарплата или диапазон зарплат
+                    if salary['to'] != None:  # инфа по максимальной зарплате в вакансии
                         sum_zp += koef*(salary['from'] + salary['to'])/2
                     else:
                         sum_zp += koef*salary['from']
         wage += sum_zp
         sum_n += n
-
     if sum_n == 0:
         av_salary = 0
     else:
         av_salary = wage/sum_n
-
     # print(f"Средняя зарплата по {city} по ключевому слову {vacancy} составляет {round(av_salary,2)} рублей.")
-
     return av_salary
-
 # print(round(parsing_av_salary('Москва', 'Python'),0))
 # print(round(parsing_av_salary('Ижевск', 'Python'),2))
