@@ -1,22 +1,19 @@
-# Используя HH API, рассчитать среднюю зарплату в city по вакансии "vacancy"
+# средняя з.п.
 import requests
-
 def parsing_av_salary(city, vacancy):
-
     url_currency = 'https://www.cbr-xml-daily.ru/daily_json.js'
     response_currency = requests.get(url_currency)
     result_json_currency = response_currency.json()
     koef_USD = result_json_currency['Valute']['USD']['Value']
     koef_EUR = result_json_currency['Valute']['EUR']['Value']
-    # print(f"Курс валюты на сегодняшнюю дату: {result_json_currency['Date']}")
-    # print(f"Курс доллара USD = {koef_USD}")
-    # print(f"Курс Евро        = {koef_EUR}")
-
+    # print(f"Курс валюты н: {result_json_currency['Date']}")
+    # print(f"USD = {koef_USD}")
+    # print(f"Евро = {koef_EUR}")
     data_whole = []
     wage = 0
     sum_n = 0
     url = 'https://api.hh.ru/vacancies'
-    for page in range(10): # Выгрузим 100 страниц вакансий
+    for page in range(10): # 100 страниц вакансий
         params = {'text': 'NAME:' + vacancy + ' AND ' + city, 'per_page':'10', 'page':page}
         # params = {'text': vacancy, 'area':'1','per_page':'10', 'page':page}
         result = requests.get(url, params=params)
