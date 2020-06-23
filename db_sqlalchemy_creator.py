@@ -4,13 +4,10 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import exc
 # from sqlalchemy.orm import relationship
 from datetime import datetime
-
 # Чтобы соединиться с СУБД, используется функция create_engine():
 engine = create_engine('sqlite:///orm1.sqlite', echo=False)
-
 # Декларативное создание таблицы, класса и отображения за один раз
 Base = declarative_base()
-
 class Vacancy_info(Base):
     __tablename__ = 'vacancy_info'
     id = Column(Integer, primary_key=True)
@@ -18,41 +15,31 @@ class Vacancy_info(Base):
     vacancy = Column(Integer, ForeignKey('vacancy.id'))
     av_salary = Column(Float)
     skills_list = Column(String)
-
     def __init__(self, city, vacancy, av_salary, skills_list):
         self.city = city
         self.vacancy = vacancy
         self.av_salary = av_salary
         self.skills_list = skills_list
-
     def __str__(self):
         return f'{self.city}, {self.vacancy}, {self.av_salary}, {self.skills_list}'
-
 class City(Base):
     __tablename__ = 'city'
     id = Column(Integer, primary_key=True)
     city = Column(String, unique=True)
-
     def __init__(self, city):
         self.city = city
-
     def __str__(self):
         return f'{self.city}'
-
 class Vacancy(Base):
     __tablename__ = 'vacancy'
     id = Column(Integer, primary_key=True)
     vacancy = Column(String, unique=True)
-
     def __init__(self, vacancy):
         self.vacancy = vacancy
-
     def __str__(self):
         return f'{self.vacancy}'
-
 def _get_date():
     return datetime.today()
-
 class Contacts(Base):
     __tablename__ = 'contacts'
     id = Column(Integer, primary_key=True)
@@ -61,21 +48,17 @@ class Contacts(Base):
     post_mail = Column(String)
     message = Column(String)
     date = Column(Date)
-
     def __init__(self, email, name, post_mail, message, date):
         self.email = email
         self.name = name
         self.post_mail = post_mail
         self.message = message
         self.date = date
-
     def __str__(self):
        return f'{self.email}, {self.name}, {self.post_mail}, {self.message}, {self.date}'
-
 if __name__ == '__main__':
     # Создание таблицы
     Base.metadata.create_all(engine)
-
     # Создание сессии. Теперь мы готовы начать общение с базой данных.
     Session = sessionmaker(bind=engine)
     session = Session()
