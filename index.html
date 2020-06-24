@@ -1,0 +1,111 @@
+<!-- LIGHT: -->
+<!-- 1. Создать не менее трех html страниц (главная страница с описанием сервиса, страница с формой запроса к API, страница с контактами). -->
+<!-- 2. Должна быть навигация по созданным html страницам. -->
+<!-- 3. Необходимо использовать CSS для элементов html страниц. -->
+<!-- PRO: -->
+<!-- 4. Необходимо использовать готовые стили bootstrap. -->
+<!-- 5. Реализовать страницу с обработкой данных из формы с помощью JS (смысл обработки на Ваше усмотрение). -->
+<!-- -->
+<!-- -->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Щепкина Елена" />
+    <meta name="copyright" content="Сайт компании ООО Техдепартамент" />
+    <meta name="description" content="Это дипломный проект" />
+    <title>О проекте</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}"/>
+<!--    <link rel="stylesheet" href = 'static/css/main.css'>-->
+
+</head>
+<body>
+     <!-- Header -->
+    <div class="container">
+        <nav class="navbar navbar-expand-md">
+            <img class="img_fluid" alt="" src="{{url_for('static', filename='img/ranepa.jpeg')}}" height="70rem">
+<!--            <img class="img_fluid" alt="" src="static/img/ranepa.jpeg" height="70rem">-->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav">
+                    <li class="nav-item active">
+                        <a href = '/' class="nav-link link-color">Об Академии<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href = '/request_sgk' class="nav-link link-color">Расчет СГК</a>
+                    </li>
+                   <li class="nav-item">
+                       <a href='/request_api' class="nav-link link-color">Форма запроса</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href='/contacts' class="nav-link link-color">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+  <!-- Home -->
+    <section class="home container mb-5">
+        <div class="row mt-5">
+            <div class="col-lg-6 mt-5 py-5 pl-5">
+                <img class="img-fluid" alt="" src="{{url_for('static', filename='img/01.jpg')}}">
+<!--                <img class="img-fluid" alt="" src="static/img/01.jpg">-->
+            </div>
+            <div class="col-lg-6 my-auto">
+                <div class="row">
+                    <div class="home-content offset-lg-1 col-lg-10">
+                        <h2>Академия – единственное образовательное учреждение в России при Президенте Российской Федерации!</h2>
+                        <p>Российская академия народного хозяйства и государственной службы при Президенте РФ (РАНХиГС) создана Указом Президента Российской Федерации от 20.09.2010 №1140 путем присоединения к Академии народного хозяйства при Правительстве Российской Федерации (АНХ, год создания – 1977) Российской академии государственной службы при Президенте Российской Федерации (РАГС, год создания – 1991), а также 12 других федеральных государственных образовательных учреждений.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Footer-->
+    <div class="container">
+        <footer id="assistant" class="footer">
+            <div class="text-center py-5">
+                <h2 class="py-3">Расчет плана СГК на очередной год</h2>
+                <div class="mx-auto heading-line"></div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <p>Программа берет данные контрольных цифр приема с сайта Академии, контингент из ВПО-1 и рассчитывает плановые цифры среднегодового контингента (СГК) на очередной учебный год.</p>
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href='/'>Об Академии</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href='/request_sgk'>Расчет СГК</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href='/request_api'>Форма запроса</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href='/contacts'>Контакты</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright text-center py-3 border-top text-muted">
+                <p>Разработан УМУ Щепкина Елена &copy; 2020</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

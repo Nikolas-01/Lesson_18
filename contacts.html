@@ -1,0 +1,120 @@
+ <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Контакты</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap&subset=cyrillic" rel="stylesheet">
+
+</head>
+<body>
+     <!-- Header -->
+    <div class="container">
+        <nav class="navbar navbar-expand-md">
+            <img class="img_fluid" alt="" src="{{url_for('static', filename='img/ranepa.jpeg')}}" height="70rem">
+<!--            <img class="img_fluid" alt="" src="static/img/ranepa.jpeg" height="70rem">-->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav">
+                    <li class="nav-item active">
+                        <a href = '/' class="nav-link link-color">Об Академии<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href = '/request_sgk' class="nav-link link-color">Расчет СГК</a>
+                    </li>
+                   <li class="nav-item">
+                       <a href='/request_api' class="nav-link link-color">Форма запроса</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href='/contacts' class="nav-link link-color">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--Contacts-->
+    <div class="text-center py-5">
+        <h2 class="py-3">Напишите нам:</h2>
+        <div class="mx-auto heading-line"></div>
+    </div>
+    <div class="container">
+         <form action = '/contacts_ok' method = 'post'>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Адрес электронной почты</label>
+              <input type="email" class="form-control" id="inputEmail4" placeholder="my@example.ru" name = 'email' required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="name">Ваше Имя</label>
+              <input type="text" class="form-control" id="inputText4" placeholder="Имя [Фамилия]" name = 'name' required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Адрес для почтовых сообщений (с индексом)</label>
+            <input type="text" class="form-control" id="inputAddress"
+                   placeholder="119571, г. Москва, Проспект Вернадского, д. 82" name = 'post_mail'>
+          </div>
+          <div class="form-group">
+            <label for="message">Сообщение</label>
+            <textarea type="message" class="form-control" id="inputText5" placeholder="Ваш вопрос или сообщение"
+                      rows="5" name = 'message'>
+            </textarea>
+          </div>
+
+          <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck" required>
+              <label class="form-check-label" for="gridCheck">
+                  Нажимая кнопку «Отправить», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных.
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" data-toggle="tooltip"
+                  data-placement="bottom" title="Отправить сообщение владельцам сайта">Отправить
+          </button>
+        </form>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <div class="container">
+        <footer id="assistant" class="footer">
+             <div class="row mb-3">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                     <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href='/'>Об Академии</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href='/request_sgk'>Расчет СГК</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href='/request_api'>Форма запроса</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href='/contacts'>Контакты</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright text-center py-3 border-top text-muted">
+                <p>Разработан УМУ Щепкина Елена &copy; 2020</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
